@@ -1,17 +1,33 @@
-import { AppDataSource } from './data-source';
+import { DataSource } from "typeorm";
 
-const main = async () => {
-    try {
-        await AppDataSource.initialize();
-        console.log('Connected to Postgres');
+const AppDataSource = new DataSource({
+  type: "postgres",
+  host: "localhost",
+  port: 5432,
+  username: 'postgres',
+  password: '1234',
+  database: 'my_pgdb',
+  entities: ["dist/**/*.entity.js"],
+  synchronize: false,
+  logging: true,
+});
 
-        await AppDataSource.runMigrations();
-        console.log('Migrations have been run successfully');
-    } catch (error) {
-        console.error('Error: ', error);
-    } finally {
-        await AppDataSource.destroy();
-    }
-};
+async function createSchema() {
 
-main();
+  await AppDataSource.initialize();
+
+  const queryRunner = AppDataSource.createQueryRunner();
+
+  await queryRunner.query(`CREATE SCHEMA IF NOT EXISTS new_schema`);
+
+  await queryRunner.query(`
+    CREATE TABLE IF NOT EXISTS new_schema.example_table (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL
+    )
+  `);
+
+  await queryRunner.release();
+}
+
+createSchema().catch((error) => console.error("Error: ", error));

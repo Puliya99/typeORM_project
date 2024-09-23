@@ -8,7 +8,9 @@ interface AdditionalInfo {
     hair_color: string;
 }
 
-@Entity('client')
+@Entity('client', {
+    schema: "new_schema",
+})
 export class Client extends Person {
 
     @Column({
