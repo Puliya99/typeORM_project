@@ -1,4 +1,7 @@
 import { DataSource } from "typeorm";
+import { Client } from "./entities/Client";
+import { Banker } from "./entities/Banker";
+import { Transaction } from "./entities/Transaction";
 
 const AppDataSource = new DataSource({
   type: "postgres",
@@ -7,8 +10,8 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: '1234',
   database: 'my_pgdb',
-  entities: ["dist/**/*.entity.js"],
-  synchronize: false,
+  entities: [Client, Banker, Transaction],
+  synchronize: true,
   logging: true,
 });
 
@@ -19,13 +22,6 @@ async function createSchema() {
   const queryRunner = AppDataSource.createQueryRunner();
 
   await queryRunner.query(`CREATE SCHEMA IF NOT EXISTS new_schema`);
-
-  await queryRunner.query(`
-    CREATE TABLE IF NOT EXISTS new_schema.example_table (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL
-    )
-  `);
 
   await queryRunner.release();
 }

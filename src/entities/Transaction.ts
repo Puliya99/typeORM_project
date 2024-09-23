@@ -6,7 +6,9 @@ export enum TransactionTypes {
     WITHDRAW = 'withdraw'
 }
 
-@Entity("transactions")
+@Entity("transactions", {
+    schema: "new_schema",
+})
 export class Transaction extends BaseEntity {
 
     @PrimaryGeneratedColumn()

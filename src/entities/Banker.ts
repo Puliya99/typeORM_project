@@ -2,7 +2,9 @@ import { Entity, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTab
 import { Person } from "./utils/Person";
 import { Client } from "./Client";
 
-@Entity('banker')
+@Entity('banker', {
+    schema: "new_schema",
+})
 export class Banker extends Person {
 
     @Column({
