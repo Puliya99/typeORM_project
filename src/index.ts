@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import { Client } from "./entities/Client";
 import { Banker } from "./entities/Banker";
+import { Client } from "./entities/Client";
 import { Transaction } from "./entities/Transaction";
 
 const AppDataSource = new DataSource({
@@ -11,19 +11,23 @@ const AppDataSource = new DataSource({
   password: '1234',
   database: 'my_pgdb',
   entities: [Client, Banker, Transaction],
-  synchronize: true,
+  synchronize: false,
   logging: true,
 });
 
-async function createSchema() {
+async function initialize() {
+  try {
+    await AppDataSource.initialize();
 
-  await AppDataSource.initialize();
+    await AppDataSource.query(`CREATE SCHEMA IF NOT EXISTS customer`);
+    await AppDataSource.query(`CREATE SCHEMA IF NOT EXISTS accounting`);
 
-  const queryRunner = AppDataSource.createQueryRunner();
-
-  await queryRunner.query(`CREATE SCHEMA IF NOT EXISTS new_schema`);
-
-  await queryRunner.release();
+    console.log('Schemas have been created or already exist.');
+  } catch (error) {
+    console.error('Error during Data Source initialization or schema creation:', error);
+  } finally {
+    await AppDataSource.destroy();
+  }
 }
 
-createSchema().catch((error) => console.error("Error: ", error));
+initialize().catch((error) => console.error("Initialization Error:", error));

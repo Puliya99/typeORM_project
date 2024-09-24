@@ -3,7 +3,7 @@ import { Person } from "./utils/Person";
 import { Client } from "./Client";
 
 @Entity('banker', {
-    schema: "new_schema",
+    schema: "accounting",
 })
 export class Banker extends Person {
 

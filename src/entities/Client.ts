@@ -9,7 +9,7 @@ interface AdditionalInfo {
 }
 
 @Entity('client', {
-    schema: "new_schema",
+    schema: "customer",
 })
 export class Client extends Person {
 

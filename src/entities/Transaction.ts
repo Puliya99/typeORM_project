@@ -7,7 +7,7 @@ export enum TransactionTypes {
 }
 
 @Entity("transactions", {
-    schema: "new_schema",
+    schema: "accounting",
 })
 export class Transaction extends BaseEntity {
 
