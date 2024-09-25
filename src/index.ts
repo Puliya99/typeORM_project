@@ -1,30 +1,17 @@
-import { DataSource } from "typeorm";
-import { Banker } from "./entities/Banker";
-import { Client } from "./entities/Client";
-import { Transaction } from "./entities/Transaction";
-
-const AppDataSource = new DataSource({
-  type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: 'postgres',
-  password: '1234',
-  database: 'my_pgdb',
-  entities: [Client, Banker, Transaction],
-  synchronize: false,
-  logging: true,
-});
+import { AppDataSource } from './DataSource';
 
 async function initialize() {
   try {
     await AppDataSource.initialize();
 
-    await AppDataSource.query(`CREATE SCHEMA IF NOT EXISTS customer`);
-    await AppDataSource.query(`CREATE SCHEMA IF NOT EXISTS accounting`);
 
-    console.log('Schemas have been created or already exist.');
+    await AppDataSource.runMigrations();
+
+    console.log('Migrations have been executed.');
+
+
   } catch (error) {
-    console.error('Error during Data Source initialization or schema creation:', error);
+    console.error('Error during Data Source initialization or migrations execution:', error);
   } finally {
     await AppDataSource.destroy();
   }
