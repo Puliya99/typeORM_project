@@ -9,18 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateSchemas1727250297893 = void 0;
-class CreateSchemas1727250297893 {
+exports.RenameSchems1728848710710 = void 0;
+class RenameSchems1728848710710 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`CREATE SCHEMA IF NOT EXISTS customer`);
-            yield queryRunner.query(`CREATE SCHEMA IF NOT EXISTS accounting`);
+            yield queryRunner.query(`ALTER SCHEMA customer RENAME TO client;`);
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
+            yield queryRunner.query(`ALTER SCHEMA client RENAME TO customer;`);
         });
     }
 }
-exports.CreateSchemas1727250297893 = CreateSchemas1727250297893;
-//# sourceMappingURL=1727250297893-CreateSchemas.js.map
+exports.RenameSchems1728848710710 = RenameSchems1728848710710;
+//# sourceMappingURL=1728848710710-RenameSchems.js.map

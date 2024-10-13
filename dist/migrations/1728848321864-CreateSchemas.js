@@ -9,20 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateSchemas1727250795899 = void 0;
-class CreateSchemas1727250795899 {
+exports.CreateSchemas1728848321864 = void 0;
+class CreateSchemas1728848321864 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`CREATE SCHEMA IF NOT EXISTS customers`);
+            yield queryRunner.query(`CREATE SCHEMA IF NOT EXISTS customer`);
             yield queryRunner.query(`CREATE SCHEMA IF NOT EXISTS accounting`);
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`DROP SCHEMA IF EXISTS customers CASCADE`);
+            yield queryRunner.query(`DROP SCHEMA IF EXISTS customer CASCADE`);
             yield queryRunner.query(`DROP SCHEMA IF EXISTS accounting CASCADE`);
         });
     }
 }
-exports.CreateSchemas1727250795899 = CreateSchemas1727250795899;
-//# sourceMappingURL=1727250795899-CreateSchemas.js.map
+exports.CreateSchemas1728848321864 = CreateSchemas1728848321864;
+//# sourceMappingURL=1728848321864-CreateSchemas.js.map

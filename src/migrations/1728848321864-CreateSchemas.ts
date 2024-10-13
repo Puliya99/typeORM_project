@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class CreateSchemas1727250795899 implements MigrationInterface {
+export class CreateSchemas1728848321864 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE SCHEMA IF NOT EXISTS customer`);
