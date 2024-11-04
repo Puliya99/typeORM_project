@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
     port: 5432,
     username: 'postgres',
     password: '1234',
-    database: 'my_pgdb',
+    database: 'typeorm',
     schema: 'public',
     entities: [Client, Transaction, Banker],
     migrations: ['dist/migrations/*.js'],

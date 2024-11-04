@@ -11,7 +11,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     port: 5432,
     username: 'postgres',
     password: '1234',
-    database: 'my_pgdb',
+    database: 'typeorm',
     schema: 'public',
     entities: [Client_1.Client, Transaction_1.Transaction, Banker_1.Banker],
     migrations: ['dist/migrations/*.js'],

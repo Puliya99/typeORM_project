@@ -48,7 +48,7 @@ __decorate([
 ], Banker.prototype, "updated_at", void 0);
 exports.Banker = Banker = __decorate([
     (0, typeorm_1.Entity)('banker', {
-        schema: "accounting",
+        schema: "banker",
     })
 ], Banker);
 //# sourceMappingURL=Banker.js.map

@@ -49,7 +49,18 @@ __decorate([
     __metadata("design:type", Array)
 ], Client.prototype, "transactions", void 0);
 __decorate([
-    (0, typeorm_1.ManyToMany)(() => Banker_1.Banker),
+    (0, typeorm_1.ManyToMany)(() => Banker_1.Banker, banker => banker.clients),
+    (0, typeorm_1.JoinTable)({
+        name: "client_bankers",
+        joinColumn: {
+            name: "client_id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "banker_id",
+            referencedColumnName: "id"
+        }
+    }),
     __metadata("design:type", Array)
 ], Client.prototype, "bankers", void 0);
 __decorate([
@@ -62,7 +73,7 @@ __decorate([
 ], Client.prototype, "updated_at", void 0);
 exports.Client = Client = __decorate([
     (0, typeorm_1.Entity)('client', {
-        schema: "customer",
+        schema: "client",
     })
 ], Client);
 //# sourceMappingURL=Client.js.map

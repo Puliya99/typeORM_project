@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { Transaction } from "./Transaction";
 import { Person } from "./utils/Person";
 import { Banker } from "./Banker";
@@ -9,7 +9,7 @@ interface AdditionalInfo {
 }
 
 @Entity('client', {
-    schema: "customer",
+    schema: "client",
 })
 export class Client extends Person {
 
@@ -43,9 +43,21 @@ export class Client extends Person {
     transactions: Transaction[];
 
     @ManyToMany(
-        () => Banker
+        () => Banker,
+        banker => banker.clients
     )
-    bankers: Banker[]
+    @JoinTable({
+        name: "client_bankers",
+        joinColumn: {
+            name: "client_id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "banker_id",
+            referencedColumnName: "id"
+        }
+    })
+    bankers: Banker[];
 
     @CreateDateColumn()
     created_at: Date;

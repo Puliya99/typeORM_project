@@ -46,7 +46,7 @@ __decorate([
 ], Transaction.prototype, "client", void 0);
 exports.Transaction = Transaction = __decorate([
     (0, typeorm_1.Entity)("transactions", {
-        schema: "accounting",
+        schema: "transactions",
     })
 ], Transaction);
 //# sourceMappingURL=Transaction.js.map
