@@ -72,8 +72,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Client.prototype, "updated_at", void 0);
 exports.Client = Client = __decorate([
-    (0, typeorm_1.Entity)('client', {
-        schema: "client",
-    })
+    (0, typeorm_1.Entity)({ name: "client" })
 ], Client);
 //# sourceMappingURL=Client.js.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"1728848710710-RenameSchems.js","sourceRoot":"","sources":["../../src/migrations/1728848710710-RenameSchems.ts"],"names":[],"mappings":";;;;;;;;;;;;AAEA,MAAa,yBAAyB;IAErB,EAAE,CAAC,WAAwB;;YACpC,MAAM,WAAW,CAAC,KAAK,CAAC,yCAAyC,CAAC,CAAC;QACvE,CAAC;KAAA;IAEY,IAAI,CAAC,WAAwB;;YACtC,MAAM,WAAW,CAAC,KAAK,CAAC,yCAAyC,CAAC,CAAC;QACvE,CAAC;KAAA;CAEJ;AAVD,8DAUC"}

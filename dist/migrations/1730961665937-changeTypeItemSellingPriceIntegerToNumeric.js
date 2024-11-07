@@ -9,24 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ChangeColumnType1730758508239 = void 0;
-class ChangeColumnType1730758508239 {
+exports.ChangeTypeItemSellingPriceIntegerToNumeric1730961665937 = void 0;
+class ChangeTypeItemSellingPriceIntegerToNumeric1730961665937 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.query(`
-            ALTER TABLE client
-            ALTER COLUMN balance TYPE integer USING balance::integer
+            ALTER TABLE item
+            ALTER COLUMN "sellingPriceRetail" TYPE numeric USING "sellingPriceRetail"::numeric
         `);
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
             yield queryRunner.query(`
-            ALTER TABLE client
-            ALTER COLUMN balance TYPE numeric USING balance::numeric
+            ALTER TABLE item
+            ALTER COLUMN "sellingPriceRetail" TYPE integer USING "sellingPriceRetail"::integer
         `);
         });
     }
 }
-exports.ChangeColumnType1730758508239 = ChangeColumnType1730758508239;
-//# sourceMappingURL=1730758508239-ChangeColumnType.js.map
+exports.ChangeTypeItemSellingPriceIntegerToNumeric1730961665937 = ChangeTypeItemSellingPriceIntegerToNumeric1730961665937;
+//# sourceMappingURL=1730961665937-changeTypeItemSellingPriceIntegerToNumeric.js.map

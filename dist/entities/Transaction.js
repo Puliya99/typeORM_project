@@ -26,13 +26,6 @@ __decorate([
 ], Transaction.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({
-        type: "enum",
-        enum: TransactionTypes
-    }),
-    __metadata("design:type", String)
-], Transaction.prototype, "type", void 0);
-__decorate([
-    (0, typeorm_1.Column)({
         type: "numeric"
     }),
     __metadata("design:type", Number)
@@ -45,8 +38,6 @@ __decorate([
     __metadata("design:type", Client_1.Client)
 ], Transaction.prototype, "client", void 0);
 exports.Transaction = Transaction = __decorate([
-    (0, typeorm_1.Entity)("transactions", {
-        schema: "transactions",
-    })
+    (0, typeorm_1.Entity)({ name: "transaction" })
 ], Transaction);
 //# sourceMappingURL=Transaction.js.map

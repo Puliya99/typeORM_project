@@ -6,19 +6,12 @@ export enum TransactionTypes {
     WITHDRAW = 'withdraw'
 }
 
-@Entity("transactions", {
-    schema: "transactions",
-})
+@Entity({ name: "transaction" })
 export class Transaction extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({
-        type: "enum",
-        enum: TransactionTypes
-    })
-    type: string
 
     @Column({
         type: "numeric"
